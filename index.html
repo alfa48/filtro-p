@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>PURIFILTRO - Painel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      /* Ajuste: 'center 20%' move a imagem para cima */
+      background: url('./src/IMG-20260119-WA0001.jpg') no-repeat center 20% fixed;
+      background-size: cover;
+      font-family: Arial, Helvetica, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 18, 68, 0.4);
+      z-index: 1;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    /* Card do Logo */
+    .logo-card {
+      margin-bottom: 50px;
+      background: rgba(150, 139, 139, 0.95);
+      padding: 15px 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo-svg {
+      width: 60px;
+      height: 60px;
+    }
+
+    .logo-texto {
+      text-align: left;
+    }
+
+    .logo-texto h1 {
+      margin: 0;
+      font-size: 30px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .logo-texto span { color: #8DC63F; } /* Verde PURI */
+    .logo-texto b { color: #0c1f55; }    /* Azul FILTRO */
+    
+    .logo-texto p {
+      margin: 5px 0 0;
+      font-size: 12px;
+      color: #8DC63F;
+      font-weight: bold;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    button {
+      width: 180px;
+      height: 90px;
+      border: none;
+      border-radius: 20px;
+      font-size: 22px;
+      font-weight: bold;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    button:active { transform: scale(0.9); }
+    .ligar { background: linear-gradient(135deg, #2ecc71, #27ae60); }
+    .desligar { background: linear-gradient(135deg, #e74c3c, #c0392b); }
+  </style>
+</head>
+<body>
+
+  <div class="content">
+    <div class="logo-card">
+      <div class="logo-texto">
+        <h1><span>PURI</span><b>FILTRO</b></h1>
+        <p>dá-te sempre mais</p>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button class="ligar" onclick="ligar()">⏻ LIGAR</button>
+      <button class="desligar" onclick="desligar()">⏻ DESLIGAR</button>
+    </div>
+  </div>
+
+  <script>
+    function ligar() { fetch('/ligar').then(() => console.log('ON')); }
+    function desligar() { fetch('/desligar').then(() => console.log('OFF')); }
+  </script>
+
+</body>
+</html>
